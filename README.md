@@ -194,12 +194,12 @@ mount /dev/sda4 /mnt/home
 1) mkfs.fat -F32 /dev/sda1 -L "UEFI"
 2) mkfs.ext4  /dev/sda2
 3) mkfs.ext4  /dev/sda3
-# *******************************************************************************************************************
+
 # Монтирование дисков
 
 4) mount /dev/sda2 /mnt
 5) mkdir /mnt/home
-6) mkdir -p /mnt/boot/efi
+6) mkdir /mnt/boot/efi
 7) mount /dev/sda1 /mnt/boot/efi
 8) mount /dev/sda3 /mnt/home
 # *******************************************************************************************************************
