@@ -109,8 +109,8 @@ fdisk /dev/sda
 # cfdisk /dev/sda
 
 
-/dev/sda1 - 500M EFI - выставить флаг EFI командой t
-/dev/sda2 - 30G root Linux File System
+/dev/sda1 - 550M EFI - выставить флаг EFI командой t
+/dev/sda2 - 32G root Linux File System
 /dev/sda3 - Весь остаток home Linux file System
 
 
@@ -206,8 +206,10 @@ mount /dev/sda4 /mnt/home
 
 3. Установка
    1. Выбор зеркал для загрузки
-# Для более быстрой загрузки пакетов настроим зеркала. Поставим российское зеркало Яндекса выше всех остальных
+# Для более быстрой загрузки пакетов настроим зеркала.
+reflector --protocol http --latest 30 --number 20 --sort rate --save /etc/pacman.d/mirrorlist
 
+# Или Поставим российское зеркало Яндекса выше всех остальных
 
 nano /etc/pacman.d/mirrorlist
 
@@ -277,17 +279,14 @@ pacman -Syy
 pacman -S grub
 grub-install /dev/sda
 
-
-# Устанавливаем загрузчик  (для UEFI)
-# pacman -S grub efibootmgr
-# grub-install /dev/sda
-
-
-
-
 # Если в системе будут несколько ОС, то это также ставим
 pacman -S os-prober mtools fuse
-# Обновляем grub.cfg
+
+# Устанавливаем загрузчик  (для UEFI)
+ pacman -S grub efibootmgr
+mkdir /boot/efi
+mount /dev/sda1 /boot/efi
+grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
@@ -374,12 +373,12 @@ pacman -Syy
 
 
 # Установим  Х (Иксы) и свободные драйвера + читаем зависимости при необходимости ставим их тоже
-# pacman -S xorg-server xorg-drivers
+ pacman -S xorg-server xorg-drivers xorg-xinit
 
 
   # 12. Ставим Xfce, LXDM и сеть 
 # Ставим Xfce + менеджер входа lxdm (или sddm)
-# pacman -S xfce4 xfce4-goodies lxdm
+ pacman -S xfce4 xfce4-goodies lxdm
 
 
 # Ставим шрифты, чтобы можно было читать, что написано. Иначе будут просто квадратики. 
@@ -387,7 +386,7 @@ pacman -S ttf-liberation ttf-dejavu
 
 
 # Ставим менеджер сети
-pacman -S networkmanager network-manager-applet ppp
+pacman -S networkmanager network-manager-applet ppp pulseaudio pulseaudio-alsa
 
 
 # Подключаем автозагрузку менеджера входа и интернет (с соблюдением регистра для NetworkManager)
