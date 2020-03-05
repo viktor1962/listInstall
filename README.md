@@ -297,11 +297,13 @@ pacman -S os-prober mtools fuse
 ############################################################################################################################
 ############################################################################################################################
 # Устанавливаем загрузчик  (для UEFI)
- pacman -S grub efibootmgr
-mkdir /boot/efi
-mount /dev/sda1 /boot/efi
-grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
-grub-mkconfig -o /boot/grub/grub.cfg
+pacman -S grub efibootmgr
+# Смотрим смотрирован ли раздел /dev/sda1 в /boo/efi ????:
+  lsblk -f
+# mkdir /boot/efi -Создать если нету!
+# mount /dev/sda1 /boot/efi - Смонтировать если нет!
+  grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
+  grub-mkconfig -o /boot/grub/grub.cfg
 ############################################################################################################################
 ############################################################################################################################
 
