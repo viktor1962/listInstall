@@ -35,7 +35,7 @@ https://www.archlinux.org/download/
 
 
 Пример: md5sum archlinux-2019.06.01-dual.iso
-Контрольная сумма 97537db63e61d20a5cb71d29145b2937 должна совпадать см. видео https://vk.cc/7S7N3o 
+Контрольная сумма 97537db63e61d20a5cb71d29145b2937 должна совпадать  
 
 
 Актуальную контрольную сумму смотрите на оффициальном сайте https://www.archlinux.org/download/ 
