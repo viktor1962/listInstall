@@ -380,7 +380,7 @@ dhcpcd
 
    7. Добавляем пользователя
 # Добавим нового пользователя. Вместо MYUSERNAME пишем имя пользователя без спец символов, только маленькие лат. буквы
-useradd -m -g users -G wheel,audio -s /bin/bash MYUSERNAME
+useradd -m -g users -G wheel,audio,storage,video -s /bin/bash MYUSERNAME
 
 # Для того, чтобы ввести полную информацию о пользователе (ФИО, и пр.), наберите:
 
