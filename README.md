@@ -287,7 +287,7 @@ pacstrap /mnt base base-devel linux linux-firmware nano netctl dhcpcd hdparm pro
 #############################################
 Пример для машины с 16ГБ оперативки:
 ######################################
-tmpfs /tmp tmpfs nodev,nosuid,size=15G 0 0
+tmpfs /tmp tmpfs nodev,nosuid,size=8G 0 0
 
 **************************************************************************************************************************
 
