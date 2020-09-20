@@ -13,12 +13,14 @@
 ## systemctl start sshd.service
 
 
-Узнаем IP компьютера, на который будем ставить Arch Linux 
+#####Узнаем IP компьютера, на который будем ставить Arch Linux -Проще это подсмотреть в роутере!
 ip a
 На компе, на который будем производить установку подключаем wi-fi командой 
-wifi-menu 
-и устанавливаем пароль для root командой 
-passwd
+wifi-menu ; pacman -S iwd
+systemctl start/enable iwd.service
+device list
+iwctl device wlp3s0 show
+ iwctl
 Заходим на комп по ssh командой 
 ssh root@000.000.0.000 
 вместо нулей подставляем ip компьютера
